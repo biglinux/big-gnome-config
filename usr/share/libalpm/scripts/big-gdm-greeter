@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Backup and replace the default gnome-shell-theme.gresource
+if [ -e "/usr/share/gnome-shell/gnome-shell-theme.gresource" ]; then
+  mv -f "/usr/share/gnome-shell/gnome-shell-theme.gresource" "/usr/share/gnome-shell/gnome-shell-theme.gresource.default"
+fi
+cp -f "/usr/share/gnome-shell/gnome-shell-theme.gresource.big" "/usr/share/gnome-shell/gnome-shell-theme.gresource"
