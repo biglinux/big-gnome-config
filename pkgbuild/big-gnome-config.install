@@ -1,0 +1,42 @@
+# This is a default template for a post-install scriptlet.
+# Uncomment only required functions and remove any functions
+# you don't need (and this header).
+
+## arg 1: the new package version
+pre_install() {
+    # Remove the file if it exists
+    if [ -e "/usr/share/gnome-shell/gnome-shell-theme.gresource.big" ]; then
+        rm -f "/usr/share/gnome-shell/gnome-shell-theme.gresource.big"
+    fi
+}
+
+## arg 1: the new package version
+post_install() {
+    # Backup and replace the default gnome-shell-theme.gresource
+    if [ ! -e "/usr/share/gnome-shell/gnome-shell-theme.gresource.default" ]; then
+		if [ -e "/usr/share/gnome-shell/gnome-shell-theme.gresource" ]; then
+			mv -f "/usr/share/gnome-shell/gnome-shell-theme.gresource" "/usr/share/gnome-shell/gnome-shell-theme.gresource.default"
+		fi
+	fi
+    cp -f "/usr/share/gnome-shell/gnome-shell-theme.gresource.big" "/usr/share/gnome-shell/gnome-shell-theme.gresource"
+}
+
+## arg 2: the old package version
+pre_upgrade() {
+    pre_install "$1"
+}
+
+## arg 2: the old package version
+post_upgrade() {
+    post_install "$1"
+}
+
+## arg 1: the old package version
+pre_remove() {
+    # do something here
+}
+
+## arg 1: the old package version
+post_remove() {
+    # do something here
+}
