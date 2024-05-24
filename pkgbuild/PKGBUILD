@@ -2,7 +2,7 @@
 
 pkgname=big-gnome-config
 pkgdesc="Package configuration Desktop Gnome"
-depends=('big-skel')
+depends=('big-skel' 'big-shell-orchis')
 conflicts=('biglinux-skel-gnome' 'bashrc-manjaro')
 pkgver=$(date +%y.%m.%d)
 pkgrel=$(date +%H%M)
