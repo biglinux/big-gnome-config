@@ -5,6 +5,9 @@ export QT_STYLE_OVERRIDE=kvantum
 export QT_QPA_PLATFORMTHEME=gnome
 export QT_WAYLAND_DECORATION=adwaita
 
+# Apps in electron use wayland
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+
 # Check system theme to apply if the QT theme is clade or dark
 /usr/share/sync-kde-and-gtk-places/sync-gnome-theme-to-qt.sh
 
